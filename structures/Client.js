@@ -1,9 +1,9 @@
-const { Client } = require('discord.js');
+const Discord = require('discord.js');
 
-const CommandHandler = require('./handlers/CommandHandler');
-const EventHandler = require('./handlers/EventHandler');
+const CommandHandler = require('./CommandHandler.js');
+const EventHandler = require('./EventHandler.js');
 
-class CodeY extends Client {
+class CodeY extends Discord.Client {
     /**
      * Options for a CodeYClient
      * @typedef {ClientOptions} CodeYClientOptions
@@ -13,18 +13,11 @@ class CodeY extends Client {
      * @property {string} [inviteURL] - Invite URL to the bot's support server
      * @property {string} [VERSION] - Version of the bot
      */
-
-    /**
-     * @param {CodeYClientOptions} [options] - Options for the client
-     */
-    constructor(options = {}) {
-        if(typeof options.prefix === 'undefined') options.prefix = 'y.';
-        if(options.prefix == null) options.prefix = '';
+    constructor(options) {
         super(options);
 
         // Handlers
         this.commands = new Discord.Collection();
-        this.events = new Discord.Collection();
         this.commandsDir = options.commandsDir || null;
         this.eventsDir = options.eventsDir || null;
         this.eventHandler = new EventHandler(this);
@@ -33,32 +26,14 @@ class CodeY extends Client {
         this.commandHandler.load(this.commandsDir);
 
         this.on("error", console.log);
-        /**
-         * Command Prefix
-         * @type {?string}
-         */
+
         this.prefix = options.prefix;
-
-        /**
-         * Command Prefix
-         * @type {?string|?string[]}
-         */
         this.owner = options.owner;
-
-        /**
-         * Command Prefix
-         * @type {?string}
-         */
         this.guild = options.guild;
-
-        /**
-         * Command Prefix
-         * @type {?string}
-         */
         this.inviteURL = options.inviteURL;
 
-        this.VERSION = options.version;
-        this.COLOR = {
+        this.version = options.version;
+        this.color = {
             MAIN: 0x36393f,
             RED: 0xa93226,
             GREEN: 0x229954,
@@ -84,21 +59,6 @@ class CodeY extends Client {
                 }
             });
         }
-    }
-
-    /**
-     * Owners of the bot, set by the {@link CommandoClientOptions#owner} option
-     * <info>If you simply need to check if a user is an owner of the bot, please instead use
-     * {@link CommandoClient#isOwner}.</info>
-     * @type {?Array<User>}
-     * @readonly
-     */
-    get owners() {
-        if(!this.options.owner) return null;
-        if(typeof this.options.owner === 'string') return [this.users.get(this.options.owner)];
-        const owners = [];
-        for(const owner of this.options.owner) owners.push(this.users.get(owner));
-        return owners;
     }
 }
 

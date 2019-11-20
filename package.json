@@ -4,13 +4,16 @@
   "description": "CodeY is a discord bot made with javascript.",
   "main": "src/index.js",
   "scripts": {
+    "run": "node .",
     "test": "node src/index.js"
   },
   "author": "HawkeyNL, Brentliefrink",
   "license": "Apache-2.0",
   "dependencies": {
     "discord.js": "github:discordjs/discord.js",
-    "path": "^0.12.7",
-    "walk": "^2.3.14"
+    "moment": "^2.24.0",
+    "moment-duration-format": "^2.2.2",
+    "walk": "^2.3.14",
+    "ws": "^7.1.0"
   }
 }

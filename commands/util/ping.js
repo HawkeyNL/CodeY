@@ -1,0 +1,39 @@
+const Command = require("../../structures/Command.js");
+const Discord = require("discord.js");
+
+class Ping extends Command {
+    constructor(client) {
+        super({
+            name: 'ping',
+            description: 'This command is used for moderators of the client.',
+            usage: `${client.prefix}ping`,
+            category: 'util',
+            enabled: true,
+            ownerOnly: false,
+            guildOnly: false
+        });
+
+        this.client = client;
+    }
+
+    async run(message, args) {
+        const promises = [
+            this.client.shard.fetchClientValues('ping')
+        ];
+
+        Promise.all(promises).then(async results => {
+            message.channel.send({embed: {
+                    color: this.client.color.green,
+                    description: `Ping from all shards.`,
+                    fields: [
+                        {
+                            name: `Shard ${this.client.shard.ids + parseInt(1)}/${this.client.shard.count}`,
+                            value: `${Math.round(this.client.ws.ping)}ms`
+                        }
+                    ]
+                }});
+        });
+    }
+}
+
+module.exports = Ping;

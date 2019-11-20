@@ -9,6 +9,8 @@
   "author": "HawkeyNL, Brentliefrink",
   "license": "Apache-2.0",
   "dependencies": {
-    "discord.js": "github:discordjs/discord.js"
+    "discord.js": "github:discordjs/discord.js",
+    "path": "^0.12.7",
+    "walk": "^2.3.14"
   }
 }

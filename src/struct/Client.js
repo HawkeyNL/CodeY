@@ -56,7 +56,7 @@ class CodeY extends Client {
          * @type {?string}
          */
         this.inviteURL = options.inviteURL;
-        
+
         this.VERSION = options.version;
         this.COLOR = {
             MAIN: 0x36393f,

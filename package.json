@@ -1,0 +1,14 @@
+{
+  "name": "codey",
+  "version": "0.0.1-beta1",
+  "description": "CodeY is a discord bot made with javascript.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node src/index.js"
+  },
+  "author": "HawkeyNL, Brentliefrink",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js"
+  }
+}

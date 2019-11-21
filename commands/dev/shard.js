@@ -6,7 +6,7 @@ class Shard extends Command {
         super({
             name: 'shard',
             description: 'This command is used for shard moderation.',
-            usage: `${client.prefix}shard <...args> <...args>`,
+            usage: `${client.prefix}shard [...args1] [...args2]`,
             category: 'dev',
             enabled: true,
             ownerOnly: true,

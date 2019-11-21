@@ -17,7 +17,12 @@ class Reboot extends Command {
     }
 
     async run(message, args) {
-        // maak een command die de bot restart.
+        message.channel.send({
+            embed: {
+                color: this.client.color.green,
+                description: `Succesfully rebooted with \`${Math.round(this.client.ws.ping)}ms\`.`
+            }
+        }).then(() => this.client.shard.respawnAll());
     }
 }
 

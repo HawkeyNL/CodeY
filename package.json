@@ -2,18 +2,23 @@
   "name": "codey",
   "version": "0.0.2.10-beta",
   "description": "CodeY is a discord bot made with javascript.",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "run": "node .",
-    "test": "node src/index.js"
+    "test": "node index.js"
   },
   "author": "HawkeyNL, Brentliefrink",
   "license": "Apache-2.0",
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "discord.js": "github:discordjs/discord.js",
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2",
+    "node-fetch": "^2.6.0",
     "walk": "^2.3.14",
     "ws": "^7.1.0"
   }

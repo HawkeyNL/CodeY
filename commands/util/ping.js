@@ -22,20 +22,23 @@ class Ping extends Command {
         ];
 
         Promise.all(promises).then(async results => {
-            message.channel.send({embed: {
-                    color: this.client.color.green,
-                    description: `Ping from ${message.author.tag} & all client shards.`,
-                    fields: [
-                        {
-                            name: `${message.author.tag}`,
-                            value: `${Math.round(this.client.ws.ping)}ms`
-                        },
-                        {
-                            name: `Shard ${parseInt(this.client.shard.ids + 1)}/${this.client.shard.count}`,
-                            value: `${Math.round(this.client.ws.ping)}ms`
-                        }
-                    ]
-                }});
+            message.channel.send(`Receiving ping....`).then(msg => {
+                msg.edit({embed: {
+                        color: this.client.color.green,
+                        description: `Ping from ${message.author.tag} & all client shards.`,
+                        fields: [
+                            {
+                                name: `${message.author.tag}`,
+                                value: `${Math.round(msg.createdTimestamp - message.createdTimestamp)}ms`
+                            },
+                            {
+                                name: `Shard ${parseInt(this.client.shard.ids + 1)}/${this.client.shard.count}`,
+                                value: `${Math.round(this.client.ws.ping)}ms`
+                            }
+                        ]
+                    }
+                });
+            });
         });
     }
 }

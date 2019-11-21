@@ -24,20 +24,18 @@ class Exec extends Command {
             const code = args.join(' ');
             const haste = ['--h', '--haste'];
             const res = await exec(code, { windowsHide: true });
+            // const haste = args.join(' --h') || args.join(' --haste');
             const { stdout, stderr } = res;
             if (haste.some(has => code.includes(has))) {
                 const hastelink = await postHaste(`${stdout ? stdout : ''}${stdout && stderr ? '\n>>>>>>>>>>>\n' : ''}${stderr ? `${stderr}` : ''}`, 'xl');
                 return message.channel.send({embed: {color: this.client.color.red, description: hastelink}});
             }
             if (stdout || stderr) {
-                return message.channel.send({embed: {
-                        color: this.client.color.green,
-                        description: `${stdout ? stdout : ''}${stdout && stderr ? '\n>>>>>>>>>>>\n' : ''}${stderr ? `${stderr}` : ''}`
-                    }}, { code: 'xl' });
+                return message.channel.send(`${stdout ? stdout : ''}${stdout && stderr ? '\n>>>>>>>>>>>\n' : ''}${stderr ? `${stderr}` : ''}`, { code: 'xl', split: true });
             }
         } catch (err) {
             console.log(err);
-            return message.channel.send({embed: {color: this.client.color.red, description: err}}, { code: 'xl' });
+            return message.channel.send({embed: {color: this.client.color.red, description: err}}, { code: 'xl', split: true });
         }
     }
 }

@@ -18,6 +18,7 @@ class CodeY extends Discord.Client {
 
         // Handlers
         this.commands = new Discord.Collection();
+        this.events = new Discord.Collection();
         this.commandsDir = options.commandsDir || null;
         this.eventsDir = options.eventsDir || null;
         this.eventHandler = new EventHandler(this);

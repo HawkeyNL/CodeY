@@ -14,6 +14,7 @@ class EventHandler {
       if (!stats.name.endsWith(".js")) return;
       const Event = require(`${resolve(root)}/${stats.name}`);
       let name = stats.name.substring(0, stats.name.length - 3);
+      this.client.events.set(this.client, name);
       this.client.on(name, (...args) => Event.run(this.client, ...args));
       console.log(`[Event Loaded] ${name}`);
       next();

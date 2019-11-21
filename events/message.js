@@ -32,7 +32,7 @@ exports.run = async (client, message) => {
 
     if (!client.commands.has(cmd)) return;
 
-    if (getCommand.enabled === false && message.author.id !== client.owner)
+    if (getCommand.enabled === false && client.owner.indexOf(message.author.id))
         return message.channel.send({
             embed: {
                 color: client.color.main,
@@ -40,11 +40,19 @@ exports.run = async (client, message) => {
             }
         });
 
-    if (getCommand.ownerOnly === true && message.author.id !== client.owner)
+    if (getCommand.ownerOnly === true && client.owner.indexOf(message.author.id))
         return message.channel.send({
             embed: {
                 color: client.color.main,
                 description: `This command has owner only enabled. You can not execute this the command.`
+            }
+        });
+
+    if(getCommand.guildOnly === true && message.guild.id !== client.guild)
+        return message.channel.send({
+            embed: {
+                color: client.color.main,
+                description: `This command has guild only enabled. You can not execute this the command.`
             }
         });
 

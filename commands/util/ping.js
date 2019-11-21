@@ -24,10 +24,14 @@ class Ping extends Command {
         Promise.all(promises).then(async results => {
             message.channel.send({embed: {
                     color: this.client.color.green,
-                    description: `Ping from all shards.`,
+                    description: `Ping from ${message.author.tag} & all client shards.`,
                     fields: [
                         {
-                            name: `Shard ${this.client.shard.ids + parseInt(1)}/${this.client.shard.count}`,
+                            name: `${message.author.tag}`,
+                            value: `${Math.round(this.client.ws.ping)}ms`
+                        },
+                        {
+                            name: `Shard ${parseInt(this.client.shard.ids + 1)}/${this.client.shard.count}`,
                             value: `${Math.round(this.client.ws.ping)}ms`
                         }
                     ]

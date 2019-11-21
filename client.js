@@ -1,10 +1,13 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const CodeYClient = require('./structures/Client.js');
 
 let owners = ['258526488138088449', '208962685084106752'];
 
 const CodeY = new CodeYClient({
     prefix: 'y.',
-    owner: '258526488138088449',
+    owner: owners,
     guild: '575953011453591552',
     commandsDir: 'commands',
     eventsDir: 'events',
@@ -15,6 +18,6 @@ const CodeY = new CodeYClient({
     fetchAllMembers: true
 });
 
-CodeY.login('NjQ2MzY0MzkwODE1MzAxNjMz.XdUVQg.sHatY0t_EWpisKOl_EIwtbRVcKM').catch((err) => {
+CodeY.login(process.env.TOKEN).catch((err) => {
     console.error(err);
 });

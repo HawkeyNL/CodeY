@@ -1,6 +1,6 @@
 {
   "name": "codey",
-  "version": "0.0.1-beta1",
+  "version": "0.0.2.10-beta",
   "description": "CodeY is a discord bot made with javascript.",
   "main": "src/index.js",
   "scripts": {

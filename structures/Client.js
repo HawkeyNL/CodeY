@@ -23,8 +23,8 @@ class CodeY extends Discord.Client {
         this.eventsDir = options.eventsDir || null;
         this.eventHandler = new EventHandler(this);
         this.eventHandler.load(this.eventsDir);
-        this.commandHandler = new CommandHandler(this);
-        this.commandHandler.load(this.commandsDir);
+        this.commandHandler = new CommandHandler({client: this, commandsDir: this.commandsDir});
+        this.commandHandler.load();
 
         this.on("error", console.log);
 

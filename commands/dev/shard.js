@@ -17,7 +17,7 @@ class Shard extends Command {
     }
 
     async run(message, args) {
-
+        message.channel.send(`Testing shards (1)`);
     }
 }
 

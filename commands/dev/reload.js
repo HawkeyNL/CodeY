@@ -10,7 +10,7 @@ class Reload extends Command {
             description: 'This command is used to reload a command.',
             usage: `${client.prefix}reload <name>`,
             category: 'dev',
-            enabled: false,
+            enabled: true,
             ownerOnly: true,
             guildOnly: true
         });

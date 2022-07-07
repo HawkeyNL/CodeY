@@ -16,7 +16,7 @@
   "dependencies": {
     "discord.js": "github:discordjs/discord.js",
     "dotenv": "^8.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-duration-format": "^2.2.2",
     "node-fetch": "^2.6.0",
     "walk": "^2.3.14",
